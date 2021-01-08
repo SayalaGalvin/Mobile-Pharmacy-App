@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "696203193041",
+    "firebase_url": "https://medifast-89983.firebaseio.com",
+    "project_id": "medifast-89983",
+    "storage_bucket": "medifast-89983.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696203193041:android:e9c97d71ea5bd93e2ab3f0",
+        "android_client_info": {
+          "package_name": "com.example.mobi_pharmacy_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696203193041-lcr0m060f9j4lq92vku4gf6hron25tjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOes86PBrMeqR3bBJ_TMFyA4s8xvwtQH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696203193041-lcr0m060f9j4lq92vku4gf6hron25tjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
