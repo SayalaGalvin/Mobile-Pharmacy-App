@@ -7,7 +7,9 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sweetalert/sweetalert.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -67,19 +69,24 @@ class _RegistrationState extends State<Registration> {
             'City': _city,
             'State': "0",
           }).then((onValue) {
-            Fluttertoast.showToast(
+            /*Fluttertoast.showToast(
                 msg: "Successfully Registered",
                 toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.CENTER,
                 timeInSecForIosWeb: 1,
                 backgroundColor: Colors.teal,
                 textColor: Colors.white,
-                fontSize: 16.0);
+                fontSize: 16.0);*/
+            Navigator.of(context).pop();
+            SweetAlert.show(context,
+                title: "Patient registration Successful",
+                subtitle: "Please Login with Your Credentials",
+                style: SweetAlertStyle.success);
           });
         }
       } else {
         Fluttertoast.showToast(
-            msg: "Email or Password is not valid",
+            msg: "Errors found on User Inputs Please Check Again",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
@@ -111,15 +118,17 @@ class _RegistrationState extends State<Registration> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       new TextFormField(
-                        decoration: new InputDecoration(labelText: "Email"),
-                        validator: (value) =>
-                            value.isEmpty ? "Email Required" : null,
+                        decoration: new InputDecoration(labelText: "Email",hintText: 'eg:- Example@example.com'),
+                        //validator: (value) =>
+                         //   value.isEmpty ? "Email Required" : null,
+                        validator: validateEmail,
                         onSaved: (value) => _email = value,
                       ),
                       new TextFormField(
                         decoration: new InputDecoration(labelText: "Password"),
-                        validator: (value) =>
-                            value.isEmpty ? "Password Required" : null,
+                       // validator: (value) =>
+                        //    value.isEmpty ? "Password Required" : null,
+                        validator: _passwordValidator,
                         onSaved: (value) => _password = value,
                         obscureText: true,
                       ),
@@ -222,4 +231,21 @@ class _RegistrationState extends State<Registration> {
       });
     });
   }
+
+  final _passwordValidator = MultiValidator([
+    RequiredValidator(errorText: 'Password is required'),
+    MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
+    //PatternValidator(r'(?=.*?[#?!@$%^&*-])', errorText: 'passwords must have at least one special character')
+  ]);
+
+  String validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Enter Valid Email';
+    else
+      return null;
+  }
+
 }

@@ -1,3 +1,4 @@
+import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:mobi_pharmacy_project/root.dart';
 import 'root.dart';
@@ -13,13 +14,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Template',
+      title: 'MediFast',
       theme: ThemeData(
         //scaffoldBackgroundColor: Colors.white,
         // primaryColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      home: new RootPage(auth: new Auth()),
-    );
+      home: SplashScreen(
+      'assets/Intro.flr',
+      new RootPage(auth: new Auth()),
+    startAnimation: 'Intro',
+    backgroundColor: Colors.blue,
+    ),);
   }
 }

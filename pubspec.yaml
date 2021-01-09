@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  flare_splash_screen: ^2.0.1+2
   flutter:
     sdk: flutter
   firebase_auth: 0.16.1
@@ -26,6 +27,8 @@ dependencies:
   firebase_storage:
   image_picker:
   flutter_launcher_icons: ^0.8.0
+  sweetalert: ^0.0.1
+  form_field_validator: ^1.0.1
   flutter_launcher_name: ^0.0.1
   rxdart:
 dev_dependencies:
@@ -48,6 +51,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/Intro.flr
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
