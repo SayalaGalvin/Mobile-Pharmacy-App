@@ -59,7 +59,7 @@ class _PendingOrdersState extends State<PendingOrders> {
                         child: ListTile(
                           onLongPress: () => {
                             Fluttertoast.showToast(
-                                msg: "Deliverd",
+                                msg: "Pending",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIosWeb: 1,

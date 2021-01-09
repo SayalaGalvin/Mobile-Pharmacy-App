@@ -34,7 +34,7 @@ class _ReceivedOrdersState extends State<ReceivedOrders> {
             child: StreamBuilder<QuerySnapshot>(
               stream: Firestore.instance
                   .collection('Requested_Orders')
-                  .where('State', isEqualTo: "3")
+                  .where('State', isEqualTo: "4")
                   .where('PatientID', isEqualTo: uId)
                   .snapshots(),
               builder: (context, snapshot) {
@@ -66,6 +66,19 @@ class _ReceivedOrdersState extends State<ReceivedOrders> {
                                 backgroundColor: Colors.teal,
                                 textColor: Colors.white,
                                 fontSize: 16.0),
+                            Firestore.instance
+                                .collection("Requested_Orders")
+                                .document(document.documentID)
+                                .setData({
+                              'PharmacyID': document['PharmacyID'],
+                              'PatientID': document['PatientID'],
+                              'Duration': document['Duration'],
+                              'Prescription': document['Prescription'],
+                              'Address': document['Address'],
+                              'Phone': document['Phone'],
+                              'State': '5',
+                              'Bill': document['Bill'],
+                            })
                           },
                           title: Image.network(document['Prescription']),
                           subtitle: Text("Bill Rs:" + document['Bill']),

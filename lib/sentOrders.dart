@@ -66,9 +66,26 @@ class _SentOrdersState extends State<SentOrders> {
                                 backgroundColor: Colors.teal,
                                 textColor: Colors.white,
                                 fontSize: 16.0),
+                            Firestore.instance
+                                .collection("Requested_Orders")
+                                .document(document.documentID)
+                                .setData({
+                              'PharmacyID': document['PharmacyID'],
+                              'PatientID': document['PatientID'],
+                              'Duration': document['Duration'],
+                              'Prescription': document['Prescription'],
+                              'Address': document['Address'],
+                              'Phone': document['Phone'],
+                              'State': '4',
+                              'Bill': document['Bill'],
+                            })
                           },
                           title: Image.network(document['Prescription']),
-                          subtitle: Text(document['Duration']+" "+document['Bill']+" "+document['Phone']),
+                          subtitle: Text(document['Duration'] +
+                              " " +
+                              document['Bill'] +
+                              " " +
+                              document['Phone']),
                         ),
                       );
                     }).toList());
